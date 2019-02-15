@@ -11,9 +11,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.98",
-	"appid": "wx307a52ca028d3c07",
-	"projectname": "iview-weapp",
+	"libVersion": "2.6.0",
+	"appid": "wx0835eddb3b3389ef",
+	"projectname": "bus",
 	"condition": {
 		"search": {
 			"current": -1,

@@ -1,8 +1,11 @@
 {
-  "navigationBarTitleText": "iView Weapp",
+  "navigationBarTitleText": "发现上报",
   "usingComponents": {
-    "i-panel": "../../dist/panel/index",
-    "i-cell-group": "../../dist/cell-group/index",
-    "i-cell": "../../dist/cell/index"
+	"i-input": "../../dist/input/index",
+	"i-button": "../../dist/button/index",
+	"i-panel": "../../dist/panel/index",
+	"i-icon": "../../dist/icon/index",
+	"i-badge": "../../dist/badge/index",
+	"i-button": "../../dist/button/index"
   }
 }
