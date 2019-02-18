@@ -1,5 +1,5 @@
 import {
-	errOK
+  err_ok
 } from '../../utils/apis/error.js';
 
 const app = getApp();
@@ -34,49 +34,63 @@ Page({
       userPwd
     } = this.data;
 
-    wx.login({
-      success(res) {
-        if (res.code) {
-          wx.request({
-            url: `${api}/${loginApi}`,
-            method: 'POST',
-            data: {
-              js_code: res.code,
-              appid: `${appid}`,
-              secret: `${secret}`,
-              userName,
-              userPwd
-            },
-            success({
-              data
-            }) {
-              if (data.code == errOK) {
-                $Message({
-                  content: '登录成功',
-                  type: 'success'
-                });
+    if (userName != '' && userPwd != '') {
+      wx.login({
+        success(res) {
+          if (res.code) {
+            wx.request({
+              url: `${api}/${loginApi}`,
+              method: 'POST',
+              data: {
+                js_code: res.code,
+                appid: `${appid}`,
+                secret: `${secret}`,
+                userName,
+                userPwd
+              },
+              success({
+                data
+              }) {
+                if (data.code === err_ok) {
+                  wx.setStorage({
+                    key: 'openid',
+                    data: data.data.openid,
+                  });
 
-								setTimeout(() => {
-									wx.switchTab({
-										url: '../index/index'
-									})
-								}, 2000);
-              } else {
-								$Message({
-									content: '登录失败,用户名或密码错误',
-									type: 'error'
-								});
-							}
-            }
-          })
-        } else {
-          $Message({
-            content: '登录失败,请检查网络状态',
-            type: 'error'
-          });
+                  $Message({
+                    content: '登录成功',
+                    type: 'success'
+                  });
+
+                  setTimeout(() => {
+                    wx.switchTab({
+                      url: '../index/index'
+                    })
+                  }, 2000);
+                } else {
+                  $Message({
+                    content: '登录失败,用户名或密码错误',
+                    type: 'error'
+                  });
+                }
+              }
+            })
+          } else {
+            $Message({
+              content: '登录失败,请检查网络状态',
+              type: 'error'
+            });
+          }
         }
-      }
-    })
+      })
+    } else {
+			$Message({
+				content: '用户名和密码不能为空',
+				type: 'error'
+			});
+		}
+
+
   },
 
   usernameChange({

@@ -20,7 +20,7 @@ Page({
         console.log(res);
       },
       fail(err) {
-        wx.switchTab({
+				wx.navigateTo({
           url: '../login/login'
         })
       }

@@ -1,1 +1,1 @@
-export const errOK = '0';
+export const err_ok = '0';
