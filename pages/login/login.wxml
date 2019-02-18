@@ -1,0 +1,8 @@
+<i-panel title="登录">
+    <i-input value="{{ userName }}" bindchange="usernameChange" title="用户名：" placeholder="用户名" maxlength="30" autofocus />
+		<i-input value="{{ userPwd }}" bindchange="userpwdChange" title="密 码：" placeholder="密码" maxlength="30" />
+</i-panel>
+
+<i-button bind:click="handleClick" type="success">登 录</i-button>
+
+<i-message id="message" />

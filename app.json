@@ -1,16 +1,17 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/my/my",
-        "pages/map/map"
-    ],
-    "window": {
-        "navigationBarBackgroundColor": "#FAFAFA",
-        "navigationBarTitleText": "iView WeApp",
-        "navigationBarTextStyle": "black",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#f9f9f9"
-    },
+	"pages": [
+		"pages/index/index",
+		"pages/login/login",
+		"pages/my/my",
+		"pages/map/map"
+	],
+	"window": {
+		"navigationBarBackgroundColor": "#FAFAFA",
+		"navigationBarTitleText": "iView WeApp",
+		"navigationBarTextStyle": "black",
+		"backgroundTextStyle": "dark",
+		"backgroundColor": "#f9f9f9"
+	},
 	"tabBar": {
 		"color": "#aaa",
 		"selectedColor": "#61a9f3",
@@ -40,5 +41,5 @@
 			"desc": "你的位置信息将用于小程序位置接口的效果展示"
 		}
 	},
-    "debug": false
+	"debug": false
 }

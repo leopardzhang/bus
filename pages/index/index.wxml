@@ -3,7 +3,7 @@
     <view>
         <picker class="picker_box" bindchange="bindClassChange" value="{{classIndex}}" range="{{eventClass}}">
             <view class="picker">
-                <text class="picker_title">事件分类：</text>
+                <view class="picker_title">事件分类：</view>
                 <text class="picker_holder" wx:if="{{ !classIndex }}">选择分类</text>
                 <text class="picker_inner">{{eventClass[classIndex]}}</text>
             </view>
@@ -14,7 +14,7 @@
     <view class="picker_box">
         <picker bindchange="bindDegreeChange" value="{{degreeIndex}}" range="{{eventDegree}}">
             <view class="picker">
-                <text class="picker_title">紧急程度：</text>
+                <view class="picker_title">紧急程度：</view>
                 <text class="picker_holder" wx:if="{{ !degreeIndex }}">选择程度</text>
                 <text class="picker_inner">{{eventDegree[degreeIndex]}}</text>
             </view>
