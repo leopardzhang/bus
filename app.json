@@ -1,13 +1,13 @@
 {
 	"pages": [
 		"pages/index/index",
-		"pages/login/login",
 		"pages/my/my",
+		"pages/login/login",
 		"pages/map/map"
 	],
 	"window": {
 		"navigationBarBackgroundColor": "#FAFAFA",
-		"navigationBarTitleText": "iView WeApp",
+		"navigationBarTitleText": "事件处理",
 		"navigationBarTextStyle": "black",
 		"backgroundTextStyle": "dark",
 		"backgroundColor": "#f9f9f9"
@@ -38,7 +38,7 @@
 	},
 	"permission": {
 		"scope.userLocation": {
-			"desc": "你的位置信息将用于小程序位置接口的效果展示"
+			"desc": "你的位置信息将用于提交事件时汇报地理位置"
 		}
 	},
 	"debug": false

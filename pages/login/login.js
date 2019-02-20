@@ -12,7 +12,7 @@ const {
   api
 } = app.globalData;
 
-const loginApi = require('../../utils/apis/login.js');
+const loginApi = require('../../utils/apis/login');
 
 Page({
   data: {
@@ -51,11 +51,17 @@ Page({
               success({
                 data
               }) {
+								console.log(data);
                 if (data.code === err_ok) {
                   wx.setStorage({
                     key: 'openid',
                     data: data.data.openid,
                   });
+
+									wx.setStorage({
+										key: 'user_id',
+										data: data.data.user_id,
+									});
 
                   $Message({
                     content: '登录成功',
@@ -74,7 +80,7 @@ Page({
                   });
                 }
               }
-            })
+            });
           } else {
             $Message({
               content: '登录失败,请检查网络状态',

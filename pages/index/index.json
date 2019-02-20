@@ -5,6 +5,7 @@
 	"i-button": "../../dist/button/index",
 	"i-panel": "../../dist/panel/index",
 	"i-icon": "../../dist/icon/index",
-	"i-badge": "../../dist/badge/index"
+	"i-badge": "../../dist/badge/index",
+	"i-message": "../../dist/message/index"
   }
 }

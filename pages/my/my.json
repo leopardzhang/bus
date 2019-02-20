@@ -1,1 +1,9 @@
-{}
+{
+	"navigationBarTitleText": "我的任务",
+	"usingComponents": {
+		"i-message": "../../dist/message/index",
+		"i-swipeout": "../../dist/swipeout/index",
+		"i-cell": "../../dist/cell/index",
+		"i-icon": "../../dist/icon/index"
+	}
+}

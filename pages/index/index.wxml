@@ -1,5 +1,5 @@
 <i-panel title="事件">
-    <i-input value="{{ name }}" title="事件名称：" placeholder="事件名称" />
+    <i-input maxlength="30" value="{{ name }}" title="事件名称：" placeholder="事件名称" bindchange="eventChange" />
     <view>
         <picker class="picker_box" bindchange="bindClassChange" value="{{classIndex}}" range="{{eventClass}}">
             <view class="picker">
@@ -9,8 +9,7 @@
             </view>
         </picker>
     </view>
-    <i-input type="textarea" value="{{ describion }}" title="事件描述：" placeholder="事件描述" />
-
+    <i-input maxlength="30" type="textarea" value="{{ describion }}" title="事件描述：" placeholder="事件描述" bindchange="describionChange" />
     <view class="picker_box">
         <picker bindchange="bindDegreeChange" value="{{degreeIndex}}" range="{{eventDegree}}">
             <view class="picker">
@@ -39,3 +38,5 @@
 </i-panel>
 
 <i-button bind:click="handleClick" type="success">提 交</i-button>
+
+<i-message id="message" />
