@@ -1,0 +1,39 @@
+<i-panel class="cell-panel-demo" title="事件详情">
+    <i-cell-group>
+				<i-cell
+					title="事件名称"
+					value="{{ eventInfo.eventname }}" />
+				<i-cell
+					title="创建人"
+					value="{{ eventInfo.creator }}" />
+				<i-cell
+					title="接收人"
+					value="{{ eventInfo.receiver }}" />
+				<i-cell
+					title="处理人"
+					value="{{ eventInfo.dealer || '--' }}" />
+				<i-cell
+					title="事件类型"
+					value="{{ eventInfo.eventtypeid }}" />
+				<i-cell
+					title="紧急程度"
+					value="{{ eventInfo.urgency }}" />
+				<i-cell
+					title="处理结果"
+					value="{{ eventInfo.dealresult || '--' }}" />
+				<i-cell
+					title="事件处理评价"
+					value="{{ eventInfo.evaluate || '--' }}" />
+				<i-cell
+					title="事件描述"
+					label="{{ eventInfo.comments }}" />
+    </i-cell-group>
+</i-panel>
+
+<image hidden="{{ !eventInfo.image }}" mode="aspectFit" src="{{ eventInfo.image }}" />
+
+<map
+	class="map"
+	longitude="{{ eventInfo.positionx }}"
+	latitude="{{ eventInfo.positiony }}"
+	markers="{{ markers }}" />

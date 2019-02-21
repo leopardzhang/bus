@@ -63,6 +63,11 @@ Page({
 										data: data.data.user_id,
 									});
 
+									wx.setStorage({
+										key: 'real_name',
+										data: data.data.real_name
+									})
+
                   $Message({
                     content: '登录成功',
                     type: 'success'

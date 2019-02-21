@@ -1,24 +1,47 @@
-<i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{210}}" unclosable="{{true}}" toggle="{{toggle}}">
+<i-swipeout
+	wx:for="{{ eventList }}"
+	wx:key="{{ eventid }}"
+	i-class="i-swipeout-demo-item"
+	operateWidth="{{ item.eventstatus == 1 ? 210 : 70 }}"
+	unclosable="{{true}}"
+	toggle="{{toggle}}">
   <view slot="content">
     <view class="i-swipeout-des">
-      <view class="i-swipeout-des-h2">第七个小矮人</view>
-      <view class="i-swipeout-des-detail">乐观善良的7个小矮人原本过着简单快乐的生活，不料诅咒公主的巫婆利用小矮人进入.</view>
+      <view class="i-swipeout-des-h2">{{ item.eventname }}</view>
+      <view class="i-swipeout-des-detail">{{ item.comments }}</view>
     </view>
   </view>
-  <view slot="button" class="i-swipeout-demo-button-group" style="background:#2db7f5;">
-    <view class="i-swipeout-demo-button" bindtap="actionsTap">
+  <view slot="button" class="i-swipeout-demo-button-group">
+    <view wx:if="{{item.eventstatus == 1}}" class="i-swipeout-demo-button" data-id="{{item.eventid}}" bindtap="handleFeedback">
       <i-icon size="16" type="flashlight_fill"></i-icon>
 			<text>反馈</text>
     </view>
-    <view class="i-swipeout-demo-button" bindtap="actionsTap">
-      <i-icon size="16" type="right"></i-icon>
+    <view wx:if="{{item.eventstatus == 1}}" class="i-swipeout-demo-button" bindtap="actionsTap">
+      <i-icon size="16" data-id="{{item.eventid}}" type="right"></i-icon>
 			<text>受理</text>
     </view>
-    <view class="i-swipeout-demo-button" bindtap="actionsTap">
+    <view class="i-swipeout-demo-button" data-id="{{ item.eventid }}" bindtap="handleCheck">
       <i-icon size="16" type="browse_fill"></i-icon>
 			<text>详情</text>
     </view>
   </view>
 </i-swipeout>
 
+<i-modal
+	title="结果反馈"
+	visible="{{ visible }}"
+	bind:ok="handleSendFeedBack"
+	bind:cancel="handleClose">
+	<i-panel>
+		<i-input
+			style="text-align:left"
+			maxlength="30"
+			value="{{ name }}"
+			autofocus="{{ autofocus }}"
+			bindchange="eventChange" />
+	</i-panel>
+</i-modal>
+
 <i-message id="message" />
+
+<i-divider wx:if="{{ over }}" content="我是有底线的"></i-divider>

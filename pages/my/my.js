@@ -12,30 +12,154 @@ const {
 } = app.globalData;
 
 const getEventList = require('../../utils/apis/getEvent');
+const feedBack = require('../../utils/apis/feedBack');
 
 Page({
-
   data: {
-		page: 1
+		page: 1,
+		size: 10,
+		eventList: [],
+		total: null,
+		over: false,
+		visible: false,
+		autofocus: false,
+		feedBackTxt: '',
+		currentId: null
   },
 
   onLoad(options) {
 		this.fnGetEventList();
   },
 
+	/**
+	 * 获取列表
+	 */
   fnGetEventList() {
-		const offset = this.page;
+		const _this = this;
+		const {
+			page: offset,
+			size: limit
+		} = this.data;
 
     wx.request({
       url: `${api}/${getEventList}`,
       data: {
-        limit: 10,
+        limit,
         offset,
         receiverid: wx.getStorageSync('user_id')
       },
-      success(res) {
-        console.log(res);
+      success({
+				data
+			}) {
+				console.log(data);
+        _this.setData({
+					eventList: data.rows,
+					total: data.total
+				})
+				const {
+					eventList,
+					size,
+					total
+				} = _this.data;
+				if (eventList.length * size >= total) {
+					_this.setData({
+						over: true
+					})
+				}
       }
     })
-  }
+  },
+
+	/**
+	 * 查看详情
+	 */
+	handleCheck({
+		currentTarget
+	}) {
+		const id = currentTarget.dataset.id;
+
+		wx.navigateTo({
+			url: `../detail/detail?id=${id}`
+		})
+	},
+
+	handleClose() {
+		this.setData({
+			visible: false
+		});
+	},
+
+	/**
+	 * 文字
+	 */
+	eventChange({
+		detail
+	}) {
+		this.setData({
+			feedBackTxt: detail.detail.value
+		})
+	},
+
+	/**
+	 * 显示反馈对话框
+	 */
+	handleFeedback(e) {
+		this.setData({
+			visible: true,
+			autofocus: true,
+			currentId: e.currentTarget.dataset.id
+		})
+	},
+
+	/**
+	 * 发送反馈结果
+	 */
+	handleSendFeedBack() {
+		const _this = this;
+
+		const {
+			feedBackTxt,
+			currentId
+		} = this.data;
+
+		if (feedBackTxt) {
+			wx.request({
+				url: `${api}/${feedBack}`,
+				method: 'POST',
+				data: {
+					eventid: currentId,
+					dealresult: feedBackTxt,
+					eventstatus: 2,
+					dealerid: wx.getStorageSync('user_id'),
+					dealer: wx.getStorageSync('real_name')
+				},
+				success({
+					data
+				}) {
+					if(data.code == err_ok) {
+						_this.setData({
+							feedBackTxt: null,
+							visible: false,
+							currentId: null
+						})
+
+						$Message({
+							content: '反馈成功',
+							type: 'success'
+						});
+					} else {
+						$Message({
+							content: '提交失败，请重试',
+							type: 'wrong'
+						});
+					}
+				}
+			})
+		} else {
+			$Message({
+				content: '请填写全部信息',
+				type: 'warning'
+			});
+		}
+	}
 })
