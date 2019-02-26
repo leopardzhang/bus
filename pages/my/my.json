@@ -7,6 +7,6 @@
 		"i-icon": "../../dist/icon/index",
 		"i-input": "../../dist/input/index",
 		"i-modal": "../../dist/modal/index",
-		"i-divider": "../../dist/divider/index"
+		"i-load-more": "../../dist/load-more/index"
 	}
 }

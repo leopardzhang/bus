@@ -1,4 +1,4 @@
-<i-panel class="cell-panel-demo" title="事件详情">
+<i-panel class="cell-panel-demo">
     <i-cell-group>
 				<i-cell
 					title="事件名称"

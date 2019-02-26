@@ -1,4 +1,4 @@
-<i-panel title="事件">
+<i-panel>
     <i-input maxlength="30" value="{{ name }}" title="事件名称：" placeholder="事件名称" bindchange="eventChange" />
     <view>
         <picker class="picker_box" bindchange="bindClassChange" value="{{classIndex}}" range="{{eventClass}}">

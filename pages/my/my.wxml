@@ -16,8 +16,8 @@
       <i-icon size="16" type="flashlight_fill"></i-icon>
 			<text>反馈</text>
     </view>
-    <view wx:if="{{item.eventstatus == 1}}" class="i-swipeout-demo-button" bindtap="actionsTap">
-      <i-icon size="16" data-id="{{item.eventid}}" type="right"></i-icon>
+    <view wx:if="{{item.eventstatus == 1}}" class="i-swipeout-demo-button" data-id="{{item.eventid}}" bindtap="handleAcceptance">
+      <i-icon size="16" type="right"></i-icon>
 			<text>受理</text>
     </view>
     <view class="i-swipeout-demo-button" data-id="{{ item.eventid }}" bindtap="handleCheck">
@@ -44,4 +44,6 @@
 
 <i-message id="message" />
 
-<i-divider wx:if="{{ over }}" content="我是有底线的"></i-divider>
+<i-load-more wx:if="{{ !over }}" />
+
+<i-load-more wx:if="{{ over }}" tip="到底儿了" loading="{{ false }}" />

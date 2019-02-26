@@ -36,6 +36,7 @@ Page({
       success({
         data
       }) {
+				console.log(data);
         _this.setData({
           eventInfo: data,
 					markers: [{

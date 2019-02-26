@@ -21,6 +21,7 @@ Page({
 		eventList: [],
 		total: null,
 		over: false,
+		overText: '加载中',
 		visible: false,
 		autofocus: false,
 		feedBackTxt: '',
@@ -30,6 +31,17 @@ Page({
   onLoad(options) {
 		this.fnGetEventList();
   },
+
+	onReachBottom(e) {
+		const _this = this;
+		if (!this.data.over) {
+			this.setData({
+				page: _this.data.page + 1
+			})
+
+			this.fnGetEventList()
+		}
+	},
 
 	/**
 	 * 获取列表
@@ -51,17 +63,21 @@ Page({
       success({
 				data
 			}) {
-				console.log(data);
+				const tempArr = [..._this.data.eventList]
+				const arr = tempArr.concat(data.rows)
+
         _this.setData({
-					eventList: data.rows,
+					eventList: arr,
 					total: data.total
 				})
 				const {
 					eventList,
 					size,
-					total
+					total,
+					page
 				} = _this.data;
-				if (eventList.length * size >= total) {
+
+				if (eventList.length * page >= total) {
 					_this.setData({
 						over: true
 					})
@@ -161,5 +177,13 @@ Page({
 				type: 'warning'
 			});
 		}
+	},
+	
+	handleAcceptance(e) {
+		const id = e.currentTarget.dataset.id;
+
+		wx.navigateTo({
+			url: `../acceptance/acceptance?id=${id}`,
+		})
 	}
 })

@@ -1,10 +1,12 @@
 {
 	"pages": [
 		"pages/index/index",
+		"pages/acceptance/acceptance",
 		"pages/my/my",
 		"pages/detail/detail",
 		"pages/login/login",
-		"pages/map/map"
+		"pages/map/map",
+		"pages/log/log"
 	],
 	"window": {
 		"navigationBarBackgroundColor": "#FAFAFA",

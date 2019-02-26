@@ -1,0 +1,90 @@
+<i-panel>
+  <i-input maxlength="30" value="{{ eventName }}" title="事件名称：" placeholder="事件名称" bindchange="eventChange" />
+  <view>
+    <picker class="picker_box" bindchange="bindClassChange" value="{{classIndex}}" range="{{eventClass}}">
+      <view class="picker">
+        <view class="picker_title">事件分类：</view>
+        <text class="picker_inner">{{eventClass[classIndex]}}</text>
+      </view>
+    </picker>
+  </view>
+  <i-input maxlength="30" type="textarea" value="{{ describion }}" title="事件描述：" placeholder="事件描述" bindchange="describionChange" />
+  <view class="picker_box">
+    <picker bindchange="bindDegreeChange" value="{{degreeIndex}}" range="{{eventDegree}}">
+      <view class="picker">
+        <view class="picker_title">紧急程度：</view>
+        <text class="picker_inner">{{eventDegree[degreeIndex]}}</text>
+      </view>
+    </picker>
+  </view>
+</i-panel>
+
+<i-panel title="指挥派遣">
+  <view class="caption-wrap">
+    <i-collapse name="{{name}}">
+      <i-collapse-item
+				wx:for="{{ tree }}"
+				wx:key="{{item.dept_id}}"
+				name="name1"
+				title="{{ item.dept_name }}"
+				i-class-title="collapse-item-title"
+				i-class-content="collapse-item-content">
+        <view slot="content">
+          <i-collapse>
+            <i-collapse-item
+							wx:for="{{ item.children }}"
+							wx:key="{{item.dept_id}}"
+							name="{{ item.dept_id }}"
+							title="{{ item.dept_name }}"
+							i-class-title="collapse-item-title"
+							i-class-content="collapse-item-content">
+              <view slot="content">
+                <i-collapse>
+									<i-collapse-item
+										wx:for="{{ item.children }}"
+										wx:key="{{item.dept_id}}"
+										name="{{ item.dept_id }}"
+										title="{{ item.dept_name }}"
+										i-class-title="collapse-item-title"
+										i-class-content="collapse-item-content">
+										<view slot="content">
+											<i-cell-group>
+												<i-cell
+													bindtap="getPerson"
+													wx:for="{{ item.children }}"
+													wx:key="{{ item.dept_id }}"
+													title="{{ item.dept_name }}"
+													data-id="{{ item.dept_id }}"
+													is-link />
+											</i-cell-group>
+										</view>
+									</i-collapse-item>
+								</i-collapse>
+              </view>
+            </i-collapse-item>
+          </i-collapse>
+        </view>
+      </i-collapse-item>
+    </i-collapse>
+  </view>
+</i-panel>
+
+<i-drawer mode="left" visible="{{showLeft}}" bind:close="toggleLeft">
+	<view class="demo-container">
+		<i-panel title="选择人员">
+			<i-checkbox-group
+				current="{{receiver}}"
+				bindchange="handleFruitChange">
+				<i-checkbox
+					wx:for="{{personList}}"
+					wx:key="{{item.cuserid}}"
+					value="{{item.real_name}}">
+				</i-checkbox>
+			</i-checkbox-group>
+		</i-panel>
+	</view>
+</i-drawer>
+
+<i-button bind:click="handleClick" type="success">提 交</i-button>
+
+<i-message id="message" />
