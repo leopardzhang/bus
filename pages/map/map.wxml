@@ -1,6 +1,29 @@
 <map
 	class="map"
 	longitude="{{ longitude }}"
-	latitude="{{ latitude }}">
-
+	latitude="{{ latitude }}"
+	markers="{{ markers }}"
+	include-points="{{ markers }}"
+	bindmarkertap="handleMark">
 </map>
+<i-drawer mode="left" visible="{{showLeft}}" bind:close="handleClick">
+  <scroll-view scroll-y="{{true}}">
+    <view class="demo-container">
+      <i-panel title="资源分类">
+        <i-checkbox-group current="{{current}}" bindchange="handleChange">
+          <i-checkbox wx:for="{{nodes}}" wx:key="{{item.resourcetypeid}}" value="{{item.typename}}">
+          </i-checkbox>
+        </i-checkbox-group>
+      </i-panel>
+
+      <i-panel title="资源分类">
+        <i-checkbox-group current="{{currents}}" bindchange="handleChanges">
+          <i-checkbox wx:for="{{nodess}}" wx:key="{{item.resourcetypeid}}" value="{{item.typename}}">
+          </i-checkbox>
+        </i-checkbox-group>
+      </i-panel>
+    </view>
+  </scroll-view>
+</i-drawer>
+
+<i-button class="btn" bind:click="handleClick">资源信息</i-button>

@@ -6,6 +6,7 @@
 		"pages/detail/detail",
 		"pages/login/login",
 		"pages/map/map",
+		"pages/process/process",
 		"pages/log/log"
 	],
 	"window": {

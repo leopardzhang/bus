@@ -1,0 +1,7 @@
+{
+	"navigationBarTitleText": "事件进程",
+  "usingComponents": {
+		"i-steps": "../../dist/steps/index",
+		"i-step": "../../dist/step/index"
+	}
+}

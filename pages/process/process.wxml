@@ -1,0 +1,26 @@
+<i-steps current="{{verticalCurrent}}" direction="vertical">
+  <i-step>
+    <view slot="title">
+      上报事件
+    </view>
+    <view slot="content">
+      {{ step1 }}
+    </view>
+  </i-step>
+  <i-step>
+    <view slot="title">
+      事件受理
+    </view>
+    <view slot="content">
+      {{ step2 }}
+    </view>
+  </i-step>
+  <i-step>
+    <view slot="title">
+      事件派遣
+    </view>
+    <view slot="content">
+      {{ step3 }}
+    </view>
+  </i-step>
+</i-steps>

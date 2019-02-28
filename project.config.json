@@ -32,7 +32,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -45,6 +45,14 @@
 					"id": -1,
 					"name": "map启动",
 					"pathName": "pages/map/map",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "查看进程",
+					"pathName": "pages/process/process",
+					"query": "id=8",
 					"scene": null
 				}
 			]

@@ -153,7 +153,7 @@ Page({
       wx.getLocation({
         type: 'wgs84',
         success(res) {
-          const position = `${res.latitude},${res.longitude}`;
+					const position = `${res.longitude},${res.latitude}`;
 
           responst(position);
         },
