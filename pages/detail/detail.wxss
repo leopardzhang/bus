@@ -2,3 +2,7 @@
 	width: 750rpx;
 	height: 700rpx;
 }
+
+.image {
+	width: 100vw;
+}

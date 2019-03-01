@@ -10,17 +10,49 @@ const {
   api
 } = app.globalData
 
-const getDetail = require('../../utils/apis/getDetail')
+const getDetail = require('../../utils/apis/getDetail');
+const getReport = require('../../utils/apis/getType');
 
 Page({
   data: {
     eventInfo: null,
-		markers: []
+		markers: [],
+		eventDegree: ['一般', '紧急', '严重'],
+		ev: null
   },
 
   onLoad({
 		id
 	}) {
+		const _this = this;
+
+		wx.request({
+			url: `${api}/${getReport}`,
+			success({
+				data
+			}) {
+				const [eventClass, eventClassList] = [
+					[],
+					[]
+				];
+				for (const item of data) {
+					eventClass.push(item.typename);
+					eventClassList.push(item.eventtypeid);
+				}
+
+				
+
+				let ev = {};
+				for (const index in eventClassList) {
+					ev[eventClassList[index]] = eventClass[index]
+				}
+
+				_this.setData({
+					ev
+				})
+			}
+		})
+
     this.getDetail(id)
   },
 

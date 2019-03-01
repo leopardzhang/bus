@@ -43,12 +43,12 @@ Page({
         for (const item of data) {
           eventClass.push(item.typename);
           eventClassList.push(item.eventtypeid);
-
-          _this.setData({
-            eventClass,
-            eventClassList
-          })
         }
+
+				_this.setData({
+					eventClass,
+					eventClassList
+				})
       }
     });
 

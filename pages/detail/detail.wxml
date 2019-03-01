@@ -5,7 +5,7 @@
 					value="{{ eventInfo.eventname }}" />
 				<i-cell
 					title="创建人"
-					value="{{ eventInfo.creator }}" />
+					value="{{ eventInfo.creator || '--' }}" />
 				<i-cell
 					title="接收人"
 					value="{{ eventInfo.receiver }}" />
@@ -14,10 +14,10 @@
 					value="{{ eventInfo.dealer || '--' }}" />
 				<i-cell
 					title="事件类型"
-					value="{{ eventInfo.eventtypeid }}" />
+					value="{{ ev[eventInfo.eventtypeid] }}" />
 				<i-cell
 					title="紧急程度"
-					value="{{ eventInfo.urgency }}" />
+					value="{{ eventDegree[eventInfo.urgency] }}" />
 				<i-cell
 					title="处理结果"
 					value="{{ eventInfo.dealresult || '--' }}" />
@@ -29,8 +29,7 @@
 					label="{{ eventInfo.comments }}" />
     </i-cell-group>
 </i-panel>
-
-<image hidden="{{ !eventInfo.image }}" mode="aspectFit" src="{{ eventInfo.image }}" />
+<image class="image" hidden="{{ !eventInfo.image }}" mode="aspectFit" src="{{ eventInfo.image }}" />
 
 <map
 	class="map"
